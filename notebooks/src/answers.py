@@ -261,16 +261,24 @@ def rd3_question_7(df):
 def to_excel(df):
     output = BytesIO()
 
+    # Criar um objeto XlsxWriter e obter a referência para o workbook
     writer = pd.ExcelWriter(output, engine="xlsxwriter")
+    workbook = writer.book
 
+    # Escrever o DataFrame no Excel
     df.to_excel(writer, index=False, sheet_name="Sheet1")
 
+    # Obter a planilha
     worksheet = writer.sheets["Sheet1"]
 
+    # Configurar a largura da coluna para autoajuste
     worksheet.set_column("A:A", None)
 
-    writer.save()
+    # Fechar o objeto XlsxWriter (salva as alterações)
+    writer.close()
 
+    # Obter os dados processados
     processed_data = output.getvalue()
 
     return processed_data
+
