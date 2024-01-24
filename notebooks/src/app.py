@@ -1,16 +1,28 @@
-import pandas as pd
-import streamlit as st
+import os
 import sys
-sys.path.append("C:\\Users\\Caio\\Documents\\cientista de dados\\phyton\\Git para cientista de dados\\projeto\\notebooks")
+import streamlit as st
 
-import src.answers as asw
+# Obtém o diretório do script
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Adiciona o diretório 'src' ao sys.path
+src_path = os.path.join(script_dir, 'src')
+sys.path.append(src_path)
+
+# Adiciona o diretório 'src' ao sys.path no Streamlit
+# Isso é necessário para garantir que o Streamlit encontre os módulos
+sys.path.insert(0, src_path)
+
+# Restante do seu código
+import pandas as pd
+from src.answers import asw
 from src.extraction import load_data
 
 st.set_page_config(layout="wide")
 
 
 def create_dataframe_section(df):
-    st.title("Sctions - Database Description")
+    st.title("Sections - Database Description")
 
     col_1, col_2 = st.columns(2)
 
@@ -34,7 +46,7 @@ def create_dataframe_section(df):
                         | km_class | Classificação das motos conforme a quilometragem percorrida |
                         | km_per_year | Quantidade de Quilometros percorridos a cada ano |
                         | km_per_month | Quantidade de Quilometros percorridos por mês |
-                        | company | Fabricanete da Motocicleta |
+                        | company | Fabricante da Motocicleta |
     """
 
     col_2.markdown(data_description)
@@ -58,23 +70,23 @@ def create_answers_section(df):
     asw.rd1_question_14(df)
 
     st.subheader(
-        "Are the bikes with a unique owner more expense on avarege than the other bikes?"
+        "Are the bikes with a unique owner more expensive on average than the other bikes?"
     )
     asw.rd2_question_1(df)
 
     st.subheader(
-        "Are the bikes that have more owners also the bikes with more kilometers traveled on avarege?"
+        "Are the bikes that have more owners also the bikes with more kilometers traveled on average?"
     )
     asw.rd2_question_2(df)
 
     st.subheader("Which company has the most bikes registered?")
     asw.rd2_question_7(df)
 
-    st.subheader("Which company has the most expensive bikes on avarege?")
+    st.subheader("Which company has the most expensive bikes on average?")
     asw.rd3_question_2(df)
 
     st.subheader(
-        "Are the company that has the most expensive bikes registered also the company with the most bikes registered?"
+        "Are the companies that have the most expensive bikes registered also the companies with the most bikes registered?"
     )
     asw.rd3_question_5(df)
 
@@ -92,3 +104,4 @@ def create_main_layout():
 
 if __name__ == "__main__":
     create_main_layout()
+
