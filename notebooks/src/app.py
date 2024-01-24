@@ -3,8 +3,8 @@ import streamlit as st
 import sys
 sys.path.append("C:\\Users\\Caio\\Documents\\cientista de dados\\phyton\\Git para cientista de dados\\projeto\\notebooks")
 
-import answers as asw
-from extraction import load_data
+import src.answers as asw
+from src.extraction import load_data
 
 st.set_page_config(layout="wide")
 
