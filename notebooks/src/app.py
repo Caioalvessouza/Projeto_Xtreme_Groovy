@@ -2,7 +2,7 @@ import os
 import sys
 import streamlit as st
 import pandas as pd
-from src.answers import asw
+from src.answers import as asw
 from src.extraction import load_data
 
 # Obtém o diretório do script
