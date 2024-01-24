@@ -1,22 +1,15 @@
 import os
 import sys
 import streamlit as st
+import pandas as pd
+from src.answers import asw
+from src.extraction import load_data
 
 # Obtém o diretório do script
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Adiciona o diretório 'src' ao sys.path
-src_path = os.path.join(script_dir, 'src')
-sys.path.append(src_path)
-
-# Adiciona o diretório 'src' ao sys.path no Streamlit
-# Isso é necessário para garantir que o Streamlit encontre os módulos
-sys.path.insert(0, src_path)
-
-# Restante do seu código
-import pandas as pd
-from src.answers import asw
-from src.extraction import load_data
+# Adiciona o diretório 'src' ao PYTHONPATH
+sys.path.insert(0, os.path.join(script_dir, 'src'))
 
 st.set_page_config(layout="wide")
 
@@ -104,4 +97,3 @@ def create_main_layout():
 
 if __name__ == "__main__":
     create_main_layout()
-
