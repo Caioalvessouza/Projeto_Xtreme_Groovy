@@ -2,7 +2,10 @@ import os
 import streamlit as st
 import pandas as pd
 import answers as asw
-from extraction import load_data
+
+# Incorporando a função load_data no código principal
+def load_data(csv_path):
+    return pd.read_csv(csv_path)
 
 st.set_page_config(layout="wide")
 
@@ -31,7 +34,7 @@ def create_dataframe_section(df):
                         | km_class | Classificação das motos conforme a quilometragem percorrida |
                         | km_per_year | Quantidade de Quilometros percorridos a cada ano |
                         | km_per_month | Quantidade de Quilometros percorridos por mês |
-                        | company | Fabricanete da Motocicleta |
+                        | company | Fabricante da Motocicleta |
     """
 
     col_2.markdown(data_description)
@@ -54,23 +57,23 @@ def create_answers_section(df):
     asw.rd1_question_14(df)
 
     st.subheader(
-        "Are the bikes with a unique owner more expense on avarege than the other bikes?"
+        "Are the bikes with a unique owner more expensive on average than the other bikes?"
     )
     asw.rd2_question_1(df)
 
     st.subheader(
-        "Are the bikes that have more owners also the bikes with more kilometers traveled on avarege?"
+        "Are the bikes that have more owners also the bikes with more kilometers traveled on average?"
     )
     asw.rd2_question_2(df)
 
     st.subheader("Which company has the most bikes registered?")
     asw.rd2_question_7(df)
 
-    st.subheader("Which company has the most expensive bikes on avarege?")
+    st.subheader("Which company has the most expensive bikes on average?")
     asw.rd3_question_2(df)
 
     st.subheader(
-        "Are the company that has the most expensive bikes registered also the company with the most bikes registered?"
+        "Are the companies that have the most expensive bikes registered also the companies with the most bikes registered?"
     )
     asw.rd3_question_5(df)
 
@@ -84,7 +87,7 @@ def create_main_layout():
     # Constrói o caminho completo para o arquivo CSV no mesmo diretório do script
     csv_path = os.path.join(script_dir, "bikes_completed.csv")
 
-    # Carrega os dados
+    # Carrega os dados usando a função load_data incorporada
     df = load_data(csv_path)
 
     create_dataframe_section(df)
