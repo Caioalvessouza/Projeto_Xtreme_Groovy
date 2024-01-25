@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 import answers as asw
@@ -5,9 +6,8 @@ from extraction import load_data
 
 st.set_page_config(layout="wide")
 
-
 def create_dataframe_section(df):
-    st.title("Sctions - Database Description")
+    st.title("Sections - Database Description")
 
     col_1, col_2 = st.columns(2)
 
@@ -35,7 +35,6 @@ def create_dataframe_section(df):
     """
 
     col_2.markdown(data_description)
-
 
 def create_answers_section(df):
     st.title("Main Questions Answers")
@@ -78,14 +77,18 @@ def create_answers_section(df):
     st.subheader("Which bikes are good for buying?")
     asw.rd3_question_7(df)
 
-
 def create_main_layout():
-    df = load_data()
+    # Obtém o diretório do script atual
+    script_dir = os.path.dirname(__file__)
+    
+    # Constrói o caminho completo para o arquivo CSV no mesmo diretório do script
+    csv_path = os.path.join(script_dir, "nome_do_arquivo.csv")
+
+    # Carrega os dados
+    df = load_data(csv_path)
 
     create_dataframe_section(df)
-
     create_answers_section(df)
-
 
 if __name__ == "__main__":
     create_main_layout()
