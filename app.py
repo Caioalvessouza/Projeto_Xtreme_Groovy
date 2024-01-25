@@ -82,7 +82,7 @@ def create_main_layout():
     script_dir = os.path.dirname(__file__)
     
     # Constrói o caminho completo para o arquivo CSV no mesmo diretório do script
-    csv_path = os.path.join(script_dir, "nome_do_arquivo.csv")
+    csv_path = os.path.join(script_dir, "bikes_completed.csv")
 
     # Carrega os dados
     df = load_data(csv_path)
