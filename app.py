@@ -10,7 +10,7 @@ def load_data(csv_path):
 st.set_page_config(layout="wide")
 
 def create_dataframe_section(df):
-    st.title("Sections - Database Description")
+    st.title("Xtreme Groovy Bikes Sales")
 
     col_1, col_2 = st.columns(2)
 
