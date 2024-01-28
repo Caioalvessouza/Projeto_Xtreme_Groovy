@@ -85,6 +85,6 @@ Fornece respostas para perguntas essenciais sobre as motocicletas no conjunto de
 
 Para explorar as respostas e visualizações interativas, basta executar o script principal. Ele carregará os dados do arquivo "bikes_completed.csv" e facilitará a análise das melhores oportunidades de motocicletas para revenda.
 
-[Link para o Dashboard](https://pricemotoindia.streamlit.app/)
+---[Link para o Dashboard]--(https://pricemotoindia.streamlit.app/)
 
 
